@@ -15,7 +15,7 @@ public class Asylum extends Field {
     }
 
     @Override
-    public boolean isAvailable(Unit<? extends Force> unit) {
+    public boolean isAvailable(Unit unit) {
         if (unit.getType() == Tank.class) {
             System.out.println("Tank can't get inside of asylum!");
             return false;
@@ -25,5 +25,10 @@ public class Asylum extends Field {
         } else {
             return true;
         }
+    }
+
+    @Override
+    public String toString() {
+        return "AS";
     }
 }

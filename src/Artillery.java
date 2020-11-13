@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class Artillery implements Force {
 
     private Field field;
@@ -18,34 +21,9 @@ public class Artillery implements Force {
                     if (isValidInput(1, input)) {
                         String firstAmount = input.substring(0, 1);
                         String firstMove = input.substring(1, input.length());
-                        switch (firstMove) {
-                            case "U":
-                                moveUp();
-                                flag = false;
-                                break;
-                            case "D":
-                                moveDown();
-                                flag = false;
-                                break;
-                            case "UR":
-                                moveUpRight();
-                                flag = false;
-                                break;
-                            case "UL":
-                                moveUpLeft();
-                                flag = false;
-                                break;
-                            case "DR":
-                                moveDownRight();
-                                flag = false;
-                                break;
-                            case "DL":
-                                moveDownLeft();
-                                flag = false;
-                                break;
-                            default:
-                                System.out.println("Invalid input!");
-                        }
+                        boolean[] array = switchCaseOfOneMove(firstMove);
+                        if(array[0])
+                            flag = false;
                     } else
                         System.out.println("Invalid input!");
                 }
@@ -59,54 +37,80 @@ public class Artillery implements Force {
 
     @Override
     public void attack() {
-        String input = Reader.input("Please enter the coordinates that you want to attack: ");
-        input = input.replace(" ", "");
-        String[] parameters = input.split(",");
-        int x = Integer.parseInt(parameters[0]);
-        int y = Integer.parseInt(parameters[1]);
-        try {
-            if (!GameArena.isAvailable(x, y))
-                throw new Exception();
-            int distance = GameArena.getDistance(field.getX(), field.getY(), x, y);
-            Field field = GameArena.getField(x, y);
-            if (distance == 0)
-                System.out.println("Invalid input!");
-            if (distance == 1 || distance == 2){
-                int dice1 = (int) (Math.random() * 6 + 1);
-                int dice2 = (int) (Math.random() * 6 + 1);
-                int dice3 = (int) (Math.random() * 6 + 1);
-                System.out.println("dice1 = " + dice1);
-                System.out.println("dice2 = " + dice2);
-                System.out.println("dice3 = " + dice3);
-                if (field.getUnit().canGotAttacked(dice1, dice2, dice3))
-                    field.gotAttacked();
+        boolean flag = true;
+        int x = 0, y = 0;
+        while (flag) {
+            while (flag) {
+                try {
+                    String input = Reader.input("Please enter the coordinates that you want to attack: ");
+                    input = input.replace(" ", "");
+                    String[] parameters = input.split(",");
+                    x = Integer.parseInt(parameters[0]);
+                    y = Integer.parseInt(parameters[1]);
+                    flag = false;
+                } catch (Exception e) {
+                    System.out.println("Invalid input!");
+                }
             }
-            if (distance == 3 || distance == 4){
-                int dice1 = (int) (Math.random() * 6 + 1);
-                int dice2 = (int) (Math.random() * 6 + 1);
-                int dice3 = (int) (Math.random() * 6 + 1);
-                int dice4 = (int) (Math.random() * 6 + 1);
-                System.out.println("dice1 = " + dice1);
-                System.out.println("dice2 = " + dice2);
-                System.out.println("dice3 = " + dice3);
-                System.out.println("dice4 = " + dice4);
-                if (field.getUnit().canGotAttacked(dice1, dice2, dice3, dice4))
-                    field.gotAttacked();
+            flag = true;
+            try {
+                if (!GameArena.isValidCoordinate(x, y))
+                    throw new Exception();
+                int distance = GameArena.getDistance(field.getX(), field.getY(), x, y);
+                Field field = GameArena.getField(x, y);
+                if (distance == 0)
+                    System.out.println("Invalid input!");
+                else if (distance == 1 || distance == 2){
+                    List<Integer> dices = new ArrayList<>();
+                    for (int i = 0; i < 3 ; i++) {
+                        int dice = (int) (Math.random() * 6 + 1);
+                        dices.add(dice);
+                        System.out.println("dice" + i + 1 + dice);
+                    }
+                    if (field.getUnit().canGotAttacked(dices))
+                        field.gotAttacked();
+                }
+                else if (distance == 3 || distance == 4){
+                    List<Integer> dices = new ArrayList<>();
+                    for (int i = 0; i < 4; i++) {
+                        int dice = (int) (Math.random() * 6 + 1);
+                        dices.add(dice);
+                        System.out.println("dice" + i + 1 + dice);
+                    }
+                    if (field.getUnit().canGotAttacked(dices))
+                        field.gotAttacked();
+                }
+                else if (distance == 5 || distance == 6){
+                    List<Integer> dices = new ArrayList<>();
+                    for (int i = 0; i < 1; i++) {
+                        int dice = (int) (Math.random() * 6 + 1);
+                        dices.add(dice);
+                        System.out.println("dice" + i + 1 + dice);
+                    }
+                    if (field.getUnit().canGotAttacked(dices))
+                        field.gotAttacked();
+                } else
+                    System.out.println("You can't attack to this field");
+                flag = false;
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-            if (distance == 5 || distance == 6){
-                int dice1 = (int) (Math.random() * 6 + 1);
-                System.out.println("dice1 = " + dice1);
-                if (field.getUnit().canGotAttacked(dice1))
-                    field.gotAttacked();
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
         }
     }
 
+    @Override
+    public Field getField() {
+        return field;
+    }
+
+    @Override
+    public void setField(Field field) {
+
+    }
+
     public static void main(String[] args) {
-        Force solder = new Soldier();
-        solder.move();
+        Force tank = new Tank();
+        tank.move();
 
     }
 }

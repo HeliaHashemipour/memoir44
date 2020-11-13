@@ -1,5 +1,6 @@
 class Axis {
-    static Card[] cards = new Card[2];
-    static int score;
+
+    private static Card[] cards = new Card[2];
+    private static int score;
 
 }
