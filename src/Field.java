@@ -25,19 +25,7 @@ public class Field {
         this.unit = unit;
     }
 
-    public int limitationOfSolderInside() {
-        return 0;
-    }
-
     public int limitationOfTankInside() {
-        return 0;
-    }
-
-    public int limitationOfArtilleryInside() {
-        return 0;
-    }
-
-    public int limitationOfArtillaryOutside() {
         return 0;
     }
 
@@ -57,5 +45,9 @@ public class Field {
 
     public Class getType() {
         return unit.getType();
+    }
+
+    public boolean isAvailable(Unit<? extends Force> unit) {
+        return true;
     }
 }

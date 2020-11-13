@@ -1,47 +1,16 @@
-import java.util.ArrayList;
 import java.util.List;
 
-public class Unit {
+public class Unit<T> {
 
-    private List<Force> forces;
+    private List<T> forces;
     private Class type;
     private Team team;
 
-    public Unit(Class type, Team team, Field field) {
-        this.type = type;
-        this.team = team;
-        forces = new ArrayList<>();
-        if (type == Tank.class) {
-            if (team == Team.ALLIED) {
-                for (int i = 0; i < 3; i++) {
-                    Tank tank = new Tank();
-                    tank.setField(field);
-                    forces.add(tank);
-                }
-            } else if (team == Team.AXIS) {
-                for (int i = 0; i < 4; i++) {
-                    Tank tank = new Tank();
-                    tank.setField(field);
-                    forces.add(tank);
-                }
-            }
-        } else if (type == Soldier.class) {
-            for (int i = 0; i < 4; i++) {
-                Soldier soldier = new Soldier();
-                soldier.setField(field);
-                forces.add(soldier);
-            }
-        } else if (type == Artillery.class) {
-            for (int i = 0; i < 2; i++) {
-                Artillery artillery = new Artillery();
-                artillery.setField(field);
-                forces.add(artillery);
-            }
-        }
-        field.setUnit(this);
+    public Unit(Class obj, Team team) {
+
     }
 
-    public List<Force> getForces() {
+    public List<T> getForces() {
         return forces;
     }
 
@@ -54,7 +23,7 @@ public class Unit {
         return type;
     }
 
-    public boolean canGotAttacked(List<Integer> dices) {
+    public boolean canGotAttacked(int ... dices) {
         if (type == Soldier.class) {
             for (int dice : dices) {
                 if (dice == 1 || dice == 6 || dice == 5)
@@ -78,10 +47,7 @@ public class Unit {
         return team;
     }
 
-    @Override
-    public String toString() {
-        return forces.size() + (type == Soldier.class ? "S" :
-                type == Tank.class ? "T" :
-                        type == Artillery.class ? "A" : "");
+    public void setTeam(Team team) {
+        this.team = team;
     }
 }
