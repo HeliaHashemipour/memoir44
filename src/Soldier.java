@@ -29,7 +29,32 @@ public class Soldier implements Force {
                 }
                 return true;
             } else if (input.equalsIgnoreCase("2")) {
+                while (flag) {
+                    input = Reader.input("Please enter where you wanna' move the soldier with its amount : ");
+                    input = input.replace("  ", " ");
 
+                    String[] inputs = input.split(" ");
+                    if (isValidInput(2, inputs)) {
+                        String firstAmount = inputs[0].substring(0, 1);
+                        String firstMove = inputs[0].substring(1);
+                        String secondMove = null;
+                        if (inputs.length > 1) {
+                            secondMove = inputs[1].substring(1);
+                        }
+                        boolean[] array = switchCaseOfMoreMove(firstMove, firstAmount);
+                        boolean continuing = array[1];
+                        if (inputs.length > 1 && array[0] && continuing) {
+                            switchCaseOfOneMove(secondMove);
+                        }
+                        if (array[0])
+                            flag = false;
+
+                        else
+                            field = reset;
+
+                    } else
+                        System.out.println("Invalid input!");
+                }
                 return false;
             } else {
                 System.out.println("Invalid input!");
@@ -57,7 +82,48 @@ public class Soldier implements Force {
                 }
             }
             flag = true;
+            try {
+                if (!GameArena.isValidCoordinate(x, y))
+                    throw new Exception();
+                int distance = GameArena.getDistance(field.getX(), field.getY(), x, y);
+                Field field = GameArena.getField(x, y);
 
+                if (distance == 0) {
+                    System.out.println("Invalid input!");
+
+                } else if (distance == 1) {
+                    List<Integer> dices = new ArrayList<>();
+                    for (int i = 0; i < 3 - field.limitationOfSolderOutside(); i++) {
+                        int dice = (int) (Math.random() * 6 + 1);
+                        dices.add(dice);
+                        System.out.println("dice" + i + 1 + dice);
+                    }
+                    if (field.getUnit().canGotAttacked(dices))
+                        field.gotAttacked();
+                } else if (distance == 2) {
+                    List<Integer> dices = new ArrayList<>();
+                    for (int i = 0; i < 2 - field.limitationOfSolderOutside(); i++) {
+                        int dice = (int) (Math.random() * 6 + 1);
+                        dices.add(dice);
+                        System.out.println("dice" + i + 1 + dice);
+                    }
+                    if (field.getUnit().canGotAttacked(dices))
+                        field.gotAttacked();
+                } else if (distance == 3) {
+                    List<Integer> dices = new ArrayList<>();
+                    for (int i = 0; i < 1 - field.limitationOfSolderOutside(); i++) {
+                        int dice = (int) (Math.random() * 6 + 1);
+                        dices.add(dice);
+                        System.out.println("dice" + i + 1 + dice);
+                    }
+                    if (field.getUnit().canGotAttacked(dices))
+                        field.gotAttacked();
+                } else
+                    System.out.println("You can't attack to this field");
+                flag = false;
+            } catch (Exception e) {
+                System.out.println("Invalid input!");
+            }
         }
     }
 
