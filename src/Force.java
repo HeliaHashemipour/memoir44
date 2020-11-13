@@ -3,7 +3,6 @@ import java.util.List;
 public interface Force {
 
     boolean move();
-
     void attack();
 
     default boolean[] moveUp() {
@@ -20,9 +19,9 @@ public interface Force {
                 force.setField(destination);
             }
             if (destination instanceof Jungle || destination instanceof Village) {
-                return new boolean[]{true, false};
+                return new boolean[] {true, false};
             }
-            return new boolean[]{true, true};
+            return new boolean[] {true, true};
         }
         return new boolean[]{false, false};
     }
@@ -41,10 +40,10 @@ public interface Force {
                 force.setField(destination);
             }
             if (destination instanceof Jungle || destination instanceof Village)
-                return new boolean[]{true, false};
-            return new boolean[]{true, true};
+                return new boolean[] {true, false};
+            return new boolean[] {true, true};
         }
-        return new boolean[]{false, false};
+        return new boolean[] {false, false};
     }
 
     default boolean[] moveUpRight() {
@@ -60,10 +59,10 @@ public interface Force {
                 force.setField(destination);
             }
             if (destination instanceof Jungle || destination instanceof Village)
-                return new boolean[]{true, false};
-            return new boolean[]{true, true};
+                return new boolean[] {true, false};
+            return new boolean[] {true, true};
         }
-        return new boolean[]{false, false};
+        return new boolean[] {false, false};
     }
 
     default boolean[] moveUpLeft() {
@@ -79,10 +78,10 @@ public interface Force {
                 force.setField(destination);
             }
             if (destination instanceof Jungle || destination instanceof Village)
-                return new boolean[]{true, false};
-            return new boolean[]{true, true};
+                return new boolean[] {true, false};
+            return new boolean[] {true, true};
         }
-        return new boolean[]{false, false};
+        return new boolean[] {false, false};
     }
 
     default boolean[] moveDownLeft() {
@@ -98,10 +97,10 @@ public interface Force {
                 force.setField(destination);
             }
             if (destination instanceof Jungle || destination instanceof Village)
-                return new boolean[]{true, false};
-            return new boolean[]{true, true};
+                return new boolean[] {true, false};
+            return new boolean[] {true, true};
         }
-        return new boolean[]{false, false};
+        return new boolean[] {false, false};
     }
 
     default boolean[] moveDownRight() {
@@ -117,21 +116,21 @@ public interface Force {
                 force.setField(destination);
             }
             if (destination instanceof Jungle || destination instanceof Village)
-                return new boolean[]{true, false};
-            return new boolean[]{true, true};
+                return new boolean[] {true, false};
+            return new boolean[] {true, true};
         }
-        return new boolean[]{false, false};
+        return new boolean[] {false, false};
     }
 
-    default boolean isValidInput(int amount, String... inputs) {
+    default boolean isValidInput(int amount, String ... inputs) {
         boolean isValid = true;
         for (String sample : inputs) {
             isValid = isValid && sample.matches("[1-3][UD][RL]?");
         }
 
-        if (isValid) {
+        if (isValid){
             int sum = 0;
-            for (String sample : inputs) {
+            for (String sample: inputs) {
                 sum += sample.charAt(0) - '0';
             }
             return sum == amount;
@@ -176,4 +175,74 @@ public interface Force {
         }
         return array;
     }
+    default boolean[] switchCaseOfMoreMove(String move, String amount) {
+        boolean[] array = null;
+        boolean continuing = true;
+        switchMovement : switch (move) {
+            case "U":
+                for (int i = 0; i < Integer.parseInt(amount) && continuing; i++) {
+                    array = moveUp();
+                    if (array[0]) {
+                        continuing = array[1];
+                    } else {
+                        break switchMovement;
+                    }
+                }
+                break;
+            case "D":
+                for (int i = 0; i < Integer.parseInt(amount) && continuing; i++) {
+                    array = moveDown();
+                    if (array[0]) {
+                        continuing = array[1];
+                    } else {
+                        break switchMovement;
+                    }
+                }
+                break;
+            case "UR":
+                for (int i = 0; i < Integer.parseInt(amount) && continuing; i++) {
+                    array = moveUpRight();
+                    if (array[0]) {
+                        continuing = array[1];
+                    } else {
+                        break switchMovement;
+                    }
+                }
+                break;
+            case "UL":
+                for (int i = 0; i < Integer.parseInt(amount) && continuing; i++) {
+                    array = moveUpLeft();
+                    if (array[0]) {
+                        continuing = array[1];
+                    } else {
+                        break switchMovement;
+                    }
+                }
+                break;
+            case "DR":
+                for (int i = 0; i < Integer.parseInt(amount) && continuing; i++) {
+                    array = moveDownRight();
+                    if (array[0]) {
+                        continuing = array[1];
+                    } else {
+                        break switchMovement;
+                    }
+                }
+                break;
+            case "DL":
+                for (int i = 0; i < Integer.parseInt(amount) && continuing; i++) {
+                    array = moveDownLeft();
+                    if (array[0]) {
+                        continuing = array[1];
+                    } else {
+                        break switchMovement;
+                    }
+                }
+                break;
+            default:
+                System.out.println("Invalid input!");
+        }
+        return array;
+    }
+
 }
