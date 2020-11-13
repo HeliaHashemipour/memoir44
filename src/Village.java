@@ -17,4 +17,9 @@ public class Village extends Field {
     public int limitationOfTankInside() {
         return 2;
     }
+
+    @Override
+    public String toString() {
+        return "VI";
+    }
 }

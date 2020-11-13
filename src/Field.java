@@ -1,8 +1,10 @@
+import java.util.Objects;
+
 public class Field {
 
     private final int x;
     private final int y;
-    private Unit<Force> unit;
+    private Unit unit;
 
     public Field(int x, int y) {
         this.x = x;
@@ -17,11 +19,11 @@ public class Field {
         return y;
     }
 
-    public Unit<Force> getUnit() {
+    public Unit getUnit() {
         return unit;
     }
 
-    public void setUnit(Unit<Force> unit) {
+    public void setUnit(Unit unit) {
         this.unit = unit;
     }
 
@@ -47,7 +49,26 @@ public class Field {
         return unit.getType();
     }
 
-    public boolean isAvailable(Unit<? extends Force> unit) {
+    public boolean isAvailable(Unit unit) {
         return true;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Field field = (Field) o;
+        return x == field.x &&
+                y == field.y;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(x, y);
+    }
+
+    @Override
+    public String toString() {
+        return "  ";
     }
 }
