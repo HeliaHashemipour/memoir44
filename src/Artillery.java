@@ -85,10 +85,14 @@ public class Artillery implements Force {
                     for (int i = 0; i < 1; i++) {
                         int dice = (int) (Math.random() * 6 + 1);
                         dices.add(dice);
-                        System.out.println("dice" + i + 1 + dice);
+                        System.out.printf("%s. dice: %s", i + 1, dice);
                     }
-                    if (field.getUnit().canGotAttacked(dices))
+                    if (field.getUnit().canGotAttacked(dices)) {
                         field.gotAttacked();
+                        System.out.println("Attacking ... ");
+                    } else {
+                        System.out.println("Sorry; You can't attack that unit this round.\nTry it later rounds");
+                    }
                 } else
                     System.out.println("You can't attack to this field");
                 flag = false;

@@ -34,4 +34,8 @@ public class Card {
         int index = (int) (Math.random() * cardRepository.size());
         return cardRepository.remove(index);
     }
+
+    public static void returningCard(Card card) {
+        cardRepository.add(card);
+    }
 }
