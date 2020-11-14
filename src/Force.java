@@ -12,6 +12,8 @@ public interface Force {
         Unit unit = field.getUnit();
         if (GameArena.isAvailable(x, y + 1)) {
             Field destination = GameArena.getField(x, y + 1);
+            if (!destination.isAvailable(unit))
+                return new boolean[] {false, false};
             destination.setUnit(unit);
             field.setUnit(null);
             List<Force> forces = unit.getForces();
@@ -33,6 +35,8 @@ public interface Force {
         Unit unit = field.getUnit();
         if (GameArena.isAvailable(x, y - 1)) {
             Field destination = GameArena.getField(x, y - 1);
+            if (!destination.isAvailable(unit))
+                return new boolean[] {false, false};
             destination.setUnit(unit);
             field.setUnit(null);
             List<Force> forces = unit.getForces();
@@ -53,6 +57,8 @@ public interface Force {
         Unit unit = field.getUnit();
         if (GameArena.isAvailable(x + 1, x % 2 == 0 ? y : y + 1)) {
             Field destination = GameArena.getField(x + 1, x % 2 == 0 ? y : y + 1);
+            if (!destination.isAvailable(unit))
+                return new boolean[] {false, false};
             destination.setUnit(unit);
             field.setUnit(null);
             for (Force force : unit.getForces()) {
@@ -72,6 +78,8 @@ public interface Force {
         Unit unit = field.getUnit();
         if (GameArena.isAvailable(x - 1, x % 2 == 0 ? y : y + 1)) {
             Field destination = GameArena.getField(x - 1, x % 2 == 0 ? y : y + 1);
+            if (!destination.isAvailable(unit))
+                return new boolean[] {false, false};
             destination.setUnit(unit);
             field.setUnit(null);
             for (Force force : unit.getForces()) {
@@ -91,6 +99,8 @@ public interface Force {
         Unit unit = field.getUnit();
         if (GameArena.isAvailable(x - 1, x % 2 == 0 ? y - 1 : y)) {
             Field destination = GameArena.getField(x - 1, x % 2 == 0 ? y - 1 : y);
+            if (!destination.isAvailable(unit))
+                return new boolean[] {false, false};
             destination.setUnit(unit);
             field.setUnit(null);
             for (Force force : unit.getForces()) {
@@ -110,6 +120,8 @@ public interface Force {
         Unit unit = field.getUnit();
         if (GameArena.isAvailable(x - 1, x % 2 == 0 ? y - 1 : y)) {
             Field destination = GameArena.getField(x + 1, x % 2 == 0 ? y - 1 : y);
+            if (!destination.isAvailable(unit))
+                return new boolean[] {false, false};
             destination.setUnit(unit);
             field.setUnit(null);
             for (Force force : unit.getForces()) {

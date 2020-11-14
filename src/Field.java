@@ -41,8 +41,14 @@ public class Field {
 
     public void gotAttacked() {
         int size = unit.gotAttacked();
-        if (size == 0)
-            unit = null;
+        if (size == 0) {
+            Team team = unit.getTeam();
+            if (team == Team.AXIS) {
+                Allied.scored();
+            } else {
+                Axis.scored();
+            }
+        }
     }
 
     public Class getType() {

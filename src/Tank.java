@@ -132,13 +132,18 @@ public class Tank implements Force {
                 System.out.println("Invalid input!");
             } else if (distance <= 3) {
                 List<Integer> dices = new ArrayList<>();
-                for (int i = 0; i < 3 - field.limitationOfTankOutside() - this.field.limitationOfTankInside(); i++) {
+                int limitation = field.limitationOfTankOutside() + this.field.limitationOfTankInside();
+                for (int i = 0; i < 3 - limitation; i++) {
                     int dice = (int) (Math.random() * 6 + 1);
                     dices.add(dice);
-                    System.out.println("dice" + i + 1 + dice);
+                    System.out.printf("%s. dice: %s%n", i + 1, dice);
                 }
-                if (field.getUnit().canGotAttacked(dices))
+                if (field.getUnit().canGotAttacked(dices)) {
                     field.gotAttacked();
+                    System.out.println("Attacking ... ");
+                } else {
+                    System.out.println("Sorry; You can't attack that unit this round.\nTry it later rounds");
+                }
             } else
                 System.out.println("You can't attack to this field");
 
