@@ -1,10 +1,18 @@
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Every instance of this class is a Soldier on the game arena
+ */
 public class Soldier implements Force {
 
+    // This field contains the field that solder is standing on
     private Field field;
 
+    /**
+     * We call this method when ever we want to move a solder
+     * @return
+     */
     @Override
     public boolean move() {
         Field reset = field;
@@ -63,6 +71,9 @@ public class Soldier implements Force {
         return false;
     }
 
+    /**
+     * We will call this method when a player wants its soldiers to attack
+     */
     @Override
     public void attack() {
         boolean flag = true;
@@ -132,17 +143,21 @@ public class Soldier implements Force {
         }
     }
 
+    /**
+     * the setter method of field
+     * @param field
+     */
     @Override
     public void setField(Field field) {
         this.field = field;
     }
 
+    /**
+     * The getter method of field
+     * @return
+     */
     public Field getField() {
         return field;
     }
 
-    public static void main(String[] args) {
-        Soldier soldier = new Soldier();
-        System.out.println(soldier.move());
-    }
 }

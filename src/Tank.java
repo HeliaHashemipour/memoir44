@@ -4,14 +4,21 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * Every instance of this class is a Tank on the game arena
+ */
 public class Tank implements Force {
 
+    // This field contains the field that tank is standing on
     private Field field;
-    private Field reset;
 
+    /**
+     * This method we'll get called when we want to move a Tank
+     * @return
+     */
     @Override
     public boolean move() {
-        reset = field;
+        Field reset = field;
         System.out.println("0.Attack");
         System.out.println("1.Move one step then attack");
         System.out.println("2.Move two steps then attack");
@@ -107,6 +114,9 @@ public class Tank implements Force {
         return false;
     }
 
+    /**
+     * This method we'll get called when a tank wants to attack
+     */
     @Override
     public void attack() {
         boolean flag = true;
@@ -152,12 +162,19 @@ public class Tank implements Force {
         }
     }
 
+    /**
+     * setter method of field
+     * @param field
+     */
     @Override
     public void setField(Field field) {
         this.field = field;
     }
 
-
+    /**
+     * getter method of field
+     * @return
+     */
     public Field getField() {
         return field;
     }

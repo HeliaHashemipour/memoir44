@@ -2,10 +2,15 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * This is the game arena of the game
+ */
 public class GameArena {
 
+    // this field is the arena of the game
     private static final List<List<Field>> arena;
 
+    // static block that sets fields and forces on arena
     static {
         arena = new ArrayList<>();
         for (int i = 0; i < 13; i++) {
@@ -145,6 +150,14 @@ public class GameArena {
 
     }
 
+    /**
+     * this method gets two coordination and returns their distance on the ground
+     * @param oldX
+     * @param oldY
+     * @param newX
+     * @param newY
+     * @return
+     */
     public static int getDistance(int oldX, int oldY, int newX, int newY) {
         int distance = 0;
         if (oldX % 2 == newX % 2) {
@@ -178,6 +191,9 @@ public class GameArena {
         return distance;
     }
 
+    /**
+     * This method prints the arena
+     */
     public static void printArena() {
         for (int i = 0; i < 7; i++) {
             System.out.print((arena.get(2 * i).get(8).getUnit() == null ? Printer.getColor(2 * i) :
@@ -259,14 +275,22 @@ public class GameArena {
         System.out.println();
     }
 
-    public static void main(String[] args) {
-        GameArena.printArena();
-    }
-
+    /**
+     * This method gets a coordination and returns the field on that ground
+     * @param x
+     * @param y
+     * @return
+     */
     public static Field getField(int x, int y) {
         return arena.get(x).get(y);
     }
 
+    /**
+     * this method gets a coordination and returns true if it's valid
+     * @param x
+     * @param y
+     * @return
+     */
     public static boolean isValidCoordinate(int x, int y) {
         if (0 <= x && x <= 12) {
             if (x % 2 == 0) {
@@ -278,6 +302,12 @@ public class GameArena {
         return false;
     }
 
+    /**
+     * This method shows if a coordination is available or not
+     * @param x
+     * @param y
+     * @return
+     */
     public static boolean isAvailable(int x, int y) {
         if (isValidCoordinate(x, y)) {
             Field field = arena.get(x).get(y);

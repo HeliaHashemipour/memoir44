@@ -1,3 +1,6 @@
+/**
+ * An interface to print colors
+ */
 public interface Printer {
 
     String[] colors = {"\u001B[37m", "\u001B[30m"};

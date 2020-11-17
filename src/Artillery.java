@@ -1,10 +1,19 @@
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Every instance of this class is an artillery at the game
+ */
 public class Artillery implements Force {
 
+    // this is the field that this artillery is standing
     private Field field;
 
+    /**
+     * The overrode method of Force interface
+     * this method will be called when ever we want to move this artillery
+     * @return true if this artillery can attack
+     */
     @Override
     public boolean move() {
         System.out.println("0.Just attack");
@@ -35,6 +44,10 @@ public class Artillery implements Force {
         return false;
     }
 
+    /**
+     * The overrode method of Force interface
+     * This method will be called when this artillery wants to attack
+     */
     @Override
     public void attack() {
         boolean flag = true;
@@ -102,19 +115,21 @@ public class Artillery implements Force {
         }
     }
 
+    /**
+     * The getter method of field
+     * @return
+     */
     @Override
     public Field getField() {
         return field;
     }
 
+    /**
+     * The setter method of field
+     * @param field
+     */
     @Override
     public void setField(Field field) {
-
-    }
-
-    public static void main(String[] args) {
-        Force tank = new Tank();
-        tank.move();
-
+        this.field = field;
     }
 }

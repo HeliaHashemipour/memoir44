@@ -1,8 +1,16 @@
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The main class of this application
+ * Everything starts from here :)
+ */
 public class Main {
 
+    /**
+     * exactly here :D
+     * @param args
+     */
     public static void main(String[] args) {
         boolean flag = true;
         System.out.println("Welcome to the memoir44 game. In this game we'll simulate the WW2.");
@@ -19,7 +27,7 @@ public class Main {
                 cards = Axis.getCards();
             }
             printCards(cards);
-            int commandLimitation = selectCard(cards);
+            int commandLimitation = selectCard(cards, flag ? Team.ALLIED : Team.AXIS);
             for (int i = 0; i < commandLimitation; i++) {
                 Unit unit = selectUnit(flag ? Team.ALLIED : Team.AXIS);
                 if (unit.getForces().get(0).move()) {
@@ -40,13 +48,17 @@ public class Main {
         }
     }
 
-    private static int selectCard(Card[] cards) {
+    private static int selectCard(Card[] cards, Team team) {
         boolean flag = true;
         int commandLimitation = 0;
         while (flag) {
             int index = Reader.integerInput("Please select one of the cards above: ");
             if (0 < index && index <= cards.length) {
-                commandLimitation = cards[index - 1].getCommandLimitation();
+                if (team == Team.ALLIED) {
+                    commandLimitation = Allied.useCard(index - 1);
+                } else {
+                    commandLimitation = Axis.useCard(index - 1);
+                }
                 flag = false;
             } else {
                 System.out.println("Invalid input!!");

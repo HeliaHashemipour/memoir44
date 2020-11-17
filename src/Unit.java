@@ -1,12 +1,26 @@
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The class of units that have some Forces on itself
+ */
 public class Unit {
 
+    // this field contains the forces
     private List<Force> forces;
+
+    // This field contains the type of forces
     private Class type;
+
+    // This field contains the team of this Unit
     private Team team;
 
+    /**
+     * The constructor of this class
+     * @param type
+     * @param team
+     * @param field
+     */
     public Unit(Class type, Team team, Field field) {
         this.type = type;
         this.team = team;
@@ -41,19 +55,36 @@ public class Unit {
         field.setUnit(this);
     }
 
+    /**
+     * getter method of forces
+     * @return
+     */
     public List<Force> getForces() {
         return forces;
     }
 
+    /**
+     * this method will get called when this field gets attacked
+     * @return
+     */
     public int gotAttacked() {
         forces.remove(forces.size() - 1);
         return forces.size();
     }
 
+    /**
+     * the getter method of type
+     * @return
+     */
     public Class getType() {
         return type;
     }
 
+    /**
+     * this method returns true if player can attack this field with his dices
+     * @param dices
+     * @return
+     */
     public boolean canGotAttacked(List<Integer> dices) {
         if (type == Soldier.class) {
             for (int dice : dices) {
@@ -74,10 +105,18 @@ public class Unit {
         return false;
     }
 
+    /**
+     * getter method of team
+     * @return
+     */
     public Team getTeam() {
         return team;
     }
 
+    /**
+     * toString method of this class
+     * @return
+     */
     @Override
     public String toString() {
         return forces.size() + (type == Soldier.class ? "S" :
