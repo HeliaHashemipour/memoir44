@@ -6,7 +6,7 @@
 public class Axis {
 
     // This field contains the cards of Axis team
-    private static Card[] cards = new Card[4];
+    private static Card[] cards = new Card[2];
 
     // This field contains the score of Axis team
     private static int score;
