@@ -129,6 +129,7 @@ public class GameArena {
         new Unit(Soldier.class, Team.ALLIED, arena.get(9).get(4));
         new Unit(Soldier.class, Team.ALLIED, arena.get(10).get(1));
         new Unit(Soldier.class, Team.ALLIED, arena.get(11).get(4));
+        new Unit(Soldier.class, Team.ALLIED, arena.get(0).get(8));
 
         new Unit(Artillery.class, Team.ALLIED, arena.get(1).get(1));
         new Unit(Artillery.class, Team.ALLIED, arena.get(6).get(1));
