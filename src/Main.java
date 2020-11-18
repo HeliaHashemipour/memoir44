@@ -38,7 +38,14 @@ public class Main {
                     System.out.println("You can't attack at this situation.");
                 }
             }
+            System.out.printf("Score of Allied: %s", Allied.getScore());
+            System.out.printf("Score of Axis: %s", Axis.getScore());
             flag = !flag;
+        }
+        if (Axis.getScore() < 6) {
+            System.out.printf("%s win.%n", Allied.getPlayersName());
+        } else {
+            System.out.printf("%s win.%n", Axis.getPlayersName());
         }
     }
 
