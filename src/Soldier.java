@@ -3,6 +3,8 @@ import java.util.List;
 
 /**
  * Every instance of this class is a Soldier on the game arena
+ * @author Hashemipour
+ * @since 2020
  */
 public class Soldier implements Force {
 

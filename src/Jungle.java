@@ -1,5 +1,7 @@
 /**
  * Every instance of this class is a jungle on the game ground
+ * @author Hashemipour
+ * @since 2020
  */
 public class Jungle extends Field {
 

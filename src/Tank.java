@@ -6,6 +6,8 @@ import java.util.List;
 
 /**
  * Every instance of this class is a Tank on the game arena
+ * @author Hashemipour
+ * @since 2020
  */
 public class Tank implements Force {
 

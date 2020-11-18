@@ -3,6 +3,8 @@ import java.util.List;
 
 /**
  * Every instance of this class is an artillery at the game
+ * @author Hashemipour
+ * @since 2020
  */
 public class Artillery implements Force {
 

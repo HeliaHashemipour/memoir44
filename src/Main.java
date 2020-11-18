@@ -4,6 +4,8 @@ import java.util.List;
 /**
  * The main class of this application
  * Everything starts from here :)
+ * @author Hashemipour
+ * @since 2020
  */
 public class Main {
 

@@ -1,5 +1,7 @@
 /**
  * Every instance of this field is a Hill on the game ground
+ * @author Hashemipour
+ * @since 2020
  */
 public class Hill extends Field {
 

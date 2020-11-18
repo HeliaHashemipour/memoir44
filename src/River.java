@@ -1,5 +1,7 @@
 /**
  * Every instance of this class is a River on the ground
+ * @author Hashemipour
+ * @since 2020
  */
 public class River extends Field {
 

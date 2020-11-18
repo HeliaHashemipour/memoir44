@@ -1,5 +1,7 @@
 /**
  * This Class contains the information of the Axis team
+ * @author Hashemipour
+ * @since 2020
  */
 public class Axis {
 

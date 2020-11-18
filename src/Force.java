@@ -2,6 +2,8 @@ import java.util.List;
 
 /**
  * Force interface that every instance of this class is a attacking force of each team
+ * @author Hashemipour
+ * @since 2020
  */
 public interface Force {
 

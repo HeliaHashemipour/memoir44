@@ -1,5 +1,7 @@
 /**
  * An interface to print colors
+ * @author Hashemipour
+ * @since 2020
  */
 public interface Printer {
 

@@ -2,6 +2,8 @@ import java.util.Scanner;
 
 /**
  * An interface to get inputs from players
+ * @author Hashemipour
+ * @since 2020
  */
 public interface Reader {
 

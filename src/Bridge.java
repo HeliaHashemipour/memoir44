@@ -1,6 +1,7 @@
 /**
  * Every instance of this class is Bridge on the field
- * It also implements the limitations of bridge
+ * @author Hashemipour
+ * @since 2020
  */
 public class Bridge extends Field {
 

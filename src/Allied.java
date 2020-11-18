@@ -1,5 +1,7 @@
 /**
  * This Class contains the information of the Allied team
+ * @author Hashemipour
+ * @since 2020
  */
 public class Allied {
 

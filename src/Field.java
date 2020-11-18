@@ -2,6 +2,8 @@ import java.util.Objects;
 
 /**
  * Every instance of this class is a normal field on the ground
+ * @author Hashemipour
+ * @since 2020
  */
 public class Field {
 

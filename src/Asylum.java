@@ -1,6 +1,8 @@
 /**
  * Every instance of this class is an asylum in ground
  * this class also  contains the limitations of asylums
+ * @author Hashemipour
+ * @since 2020
  */
 public class Asylum extends Field {
 

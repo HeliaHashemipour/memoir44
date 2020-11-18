@@ -1,5 +1,7 @@
 /**
  * every instance of this class is village on the game ground
+ * @author Hashemipour
+ * @since 2020
  */
 public class Village extends Field {
 

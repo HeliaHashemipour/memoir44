@@ -4,6 +4,8 @@ import java.util.List;
 
 /**
  * This is the game arena of the game
+ * @author Hashemipour
+ * @since 2020
  */
 public class GameArena {
 

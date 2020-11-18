@@ -3,6 +3,8 @@ import java.util.List;
 
 /**
  * The class of units that have some Forces on itself
+ * @author Hashemipour
+ * @since 2020
  */
 public class Unit {
 

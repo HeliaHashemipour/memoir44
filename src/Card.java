@@ -2,8 +2,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Every instance of this class is a game card that contains the commandlimitation
+ * Every instance of this class is a game card that contains the command limitation
  * player should command as many forces as wrote on the card
+ * @author Hashemipour
+ * @since 2020
  */
 public class Card {
 
