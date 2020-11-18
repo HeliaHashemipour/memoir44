@@ -7,7 +7,7 @@ public interface Printer {
 
     String[] colors = {"\u001B[37m", "\u001B[30m"}; //White & Black
 
-    String AXIS = "\u001B[33m"; // Yellow
+    String AXIS = "\033[1;96m"; //Bright Cyan
     String ALLIED = "\u001B[31m";//Red
 
     String RESET = "\u001B[0m"; //Reset

@@ -29,7 +29,7 @@ public class GameArena {
         temp.remove(5);
         temp.add(5, new River(0, 5));
         temp.remove(6);
-        temp.add(6, new Asylum(0, 6));
+        temp.add(6, new Village(0, 6));
 
         temp = arena.get(1);
         temp.remove(7);
@@ -45,7 +45,7 @@ public class GameArena {
         temp.remove(7);
         temp.add(6, new River(2, 7));
         temp.remove(2);
-        temp.add(2, new Asylum(2, 2));
+        temp.add(2, new Village(2, 2));
         temp.remove(5);
         temp.add(5, new Jungle(2, 5));
 
@@ -71,7 +71,7 @@ public class GameArena {
         temp.remove(3);
         temp.add(3, new Hill(5, 3));
         temp.remove(6);
-        temp.add(6, new Village(5, 6));
+        temp.add(6, new Asylum(5, 6));
         temp.remove(1);
         temp.add(1, new Jungle(5, 1));
 
@@ -85,7 +85,7 @@ public class GameArena {
         temp.remove(6);
         temp.add(6, new Hill(7, 6));
         temp.remove(3);
-        temp.add(3, new Asylum(7, 3));
+        temp.add(3, new Village(7, 3));
 
         temp = arena.get(8);
         temp.remove(2);
@@ -99,7 +99,7 @@ public class GameArena {
 
         temp = arena.get(10);
         temp.remove(4);
-        temp.add(4, new Asylum(10, 4));
+        temp.add(4, new Village(10, 4));
         temp.remove(2);
         temp.add(2, new Jungle(10, 2));
         temp.remove(7);
@@ -107,7 +107,7 @@ public class GameArena {
 
         temp = arena.get(11);
         temp.remove(0);
-        temp.add(0, new Asylum(11, 0));
+        temp.add(0, new Village(11, 0));
         temp.remove(3);
         temp.add(3, new Hill(11, 3));
         temp.remove(4);
